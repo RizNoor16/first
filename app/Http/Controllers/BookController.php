@@ -8,7 +8,7 @@ use App\Models\Book;
 class BookController extends Controller
 {
     public function getAllBooks() {
-        $books = Book::get()->toJson();
+        $books = Book::where('id', '>', 0)->simplePaginate(3);
         return response($books, 200);
       }
 
